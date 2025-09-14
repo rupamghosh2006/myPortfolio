@@ -212,7 +212,7 @@
     <div class="mb-8 flex items-center justify-center">
       <div class="relative">
         <i data-lucide="cpu" class="w-12 h-12 text-yellow-400 pulse"></i>
-        <div class="absolute inset-0 w-12 h-12 rounded-full border-2 border-yellow-400 border-t-transparent animate-spin"></div>
+        <!-- <div class="absolute inset-0 w-12 h-12 rounded-full border-2 border-yellow-400 border-t-transparent animate-spin"></div> -->
       </div>
     </div>
     <p class="text-xl font-bold text-white mb-2">I'm not a professional UI/UX designer — don't expect much.</p>
@@ -299,8 +299,8 @@
   <!-- Enhanced Hero section -->
   <section id="hero" class="relative min-h-screen flex items-center hero-gradient">
     <!-- 3D canvas -->
-    <div class="absolute inset-0 -z-10">
-      <!-- <canvas id="three-canvas" class="w-full h-full block"></canvas> -->
+    <!-- <div class="absolute inset-0 -z-10">
+      <canvas id="three-canvas" class="w-full h-full block"></canvas>
       <div id="three-fallback" class="hidden h-full w-full bg-gradient-to-b from-black/90 to-black/95 flex items-center justify-center three-fallback">
         <div class="text-center">
           <i data-lucide="cpu" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
@@ -308,7 +308,7 @@
           <p class="text-slate-500 text-sm mt-2">Static tech environment active</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="max-w-6xl mx-auto w-full px-6 sm:px-8 flex flex-col lg:flex-row items-center gap-12">
       <div class="lg:w-3/5 text-left space-y-8">
@@ -456,7 +456,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <label class="block">
             <span class="text-sm font-semibold text-slate-300 mb-2 block">Name *</span>
-            <input id="name" name="name" required 
+            <input id="name" name="Name" required 
                    class="form-input mt-1 block w-full px-4 py-3 rounded-lg bg-slate-700 text-white focus-ring placeholder-slate-400" 
                    placeholder="Your full name" />
           </label>
@@ -471,7 +471,7 @@
 
         <label class="block">
           <span class="text-sm font-semibold text-slate-300 mb-2 block">Message *</span>
-          <textarea id="message" name="message" rows="6" required 
+          <textarea id="message" name="Message" rows="6" required 
                     class="form-input mt-1 block w-full px-4 py-3 rounded-lg bg-slate-700 text-white focus-ring placeholder-slate-400 resize-none"
                     placeholder="Tell me about your project..."></textarea>
         </label>
@@ -484,6 +484,20 @@
           </button>
           <div id="form-status" class="text-sm text-slate-300"></div>
         </div>
+
+        <!-- Direct Contact Info -->
+                    <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                        <p class="text-gray-400 mb-4">Or reach me directly:</p>
+                        <div class="flex justify-center space-x-8">
+                            <a href="mailto:rupam@example.com" class="flex items-center text-yellow-500 hover:underline focus-ring">
+                                <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                                rupamgh32@gmail.com
+                            </a>
+                            <a href="tel:+918670108063" class="flex items-center text-yellow-500 hover:underline focus-ring">
+                                <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                                +91 86701-08063
+                            </a>
+                        </div>
       </form>
     </div>
   </section>
@@ -492,7 +506,7 @@
   <footer class="py-12 bg-black border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="flex items-center gap-6">
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" 
+        <a href="https://github.com//rupamghosh2006" target="_blank" rel="noopener noreferrer" 
            class="text-slate-400 hover:text-white hover:scale-110 transition-all duration-200 p-2">
           <i data-lucide="github" class="w-6 h-6"></i><span class="sr-only">GitHub</span>
         </a>
@@ -500,7 +514,7 @@
            class="text-slate-400 hover:text-white hover:scale-110 transition-all duration-200 p-2">
           <i data-lucide="linkedin" class="w-6 h-6"></i><span class="sr-only">LinkedIn</span>
         </a>
-        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" 
+        <a href="https://x.com/RupamGhosh2006" target="_blank" rel="noopener noreferrer" 
            class="text-slate-400 hover:text-white hover:scale-110 transition-all duration-200 p-2">
           <i data-lucide="twitter" class="w-6 h-6"></i><span class="sr-only">X</span>
         </a>
@@ -1195,7 +1209,7 @@ function bindEnhancedContactForm() {
       
       if (!response.ok) throw new Error('Network response was not ok');
       
-      dom.formStatus.innerHTML = '<span class="text-green-400">✅ Message sent successfully! I\'ll get back to you soon.</span>';
+      dom.formStatus.innerHTML = '<span class="text-green-400">Message sent! I will get back to you faster than you can say "undefined is not a function".</span>';
       dom.contactForm.reset();
       
       // Auto-clear success message
