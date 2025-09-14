@@ -996,36 +996,38 @@ function renderEnhancedProjects() {
     const header = document.createElement('div');
     header.className = 'flex items-start gap-4 mb-4';
     
-    const iconContainer = document.createElement('div');
-    iconContainer.className = 'relative';
     
-    const iconWrapper = document.createElement('div');
-    iconWrapper.className = `w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${project.gradient} shadow-lg`;
-
     if (project.icon && (project.icon.endsWith('.png') || project.icon.endsWith('.jpg') || project.icon.endsWith('.svg'))) {
-    // Local image
-    const img = document.createElement('img');
-    img.src = project.icon; // e.g. "assets/images/projects/chat.png"
-    img.alt = project.title + " icon";
-    img.className = "w-7 h-7 object-contain";
-    iconWrapper.appendChild(img);
-    } else {
-    // Lucide fallback
-    const icon = document.createElement('i');
-    icon.dataset.lucide = project.icon || 'folder';
-    icon.className = 'w-7 h-7 text-white';
-    iconWrapper.appendChild(icon);
-    }
+  // Full-width project image
+  const img = document.createElement('img');
+  img.src = project.icon; // e.g. "assets/images/projects/chat.png"
+  img.alt = project.title + " thumbnail";
+  img.className = "w-full h-40 object-cover rounded-xl mb-4"; 
+  card.appendChild(img); // put at top of card
+} else {
+  // Default small Lucide icon
+  const iconContainer = document.createElement('div');
+  iconContainer.className = 'relative';
+
+  const iconWrapper = document.createElement('div');
+  iconWrapper.className = `w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${project.gradient} shadow-lg`;
+
+  const icon = document.createElement('i');
+  icon.dataset.lucide = project.icon || 'folder';
+  icon.className = 'w-7 h-7 text-white';
+  iconWrapper.appendChild(icon);
+
+  if (project.active) {
+    const statusDot = document.createElement('div');
+    statusDot.className = 'absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-800 animate-pulse';
+    iconContainer.appendChild(statusDot);
+  }
+
+  iconContainer.appendChild(iconWrapper);
+  header.appendChild(iconContainer);
+}
 
     
-    if (project.active) {
-      const statusDot = document.createElement('div');
-      statusDot.className = 'absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-800 animate-pulse';
-      iconContainer.appendChild(statusDot);
-    }
-    
-    iconContainer.appendChild(iconWrapper);
-    header.appendChild(iconContainer);
 
     const titleGroup = document.createElement('div');
     titleGroup.className = 'flex-1';
