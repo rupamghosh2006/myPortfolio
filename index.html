@@ -237,10 +237,10 @@
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
           <button id="brand" class="inline-flex items-center gap-2 focus-ring group" aria-label="Rupam brand">
-            <div class="w-10 h-10 rounded-t-xl bg-gradient-to-tr from-yellow-400 via-amber-500 to-orange-500 flex items-center justify-center text-black font-bold shadow-lg group-hover:scale-110 transition-transform">
+            <div class="w-10 h-10 rounded-t-lg bg-gradient-to-tr from-yellow-400 via-amber-500 to-orange-500 flex items-center justify-center text-black font-bold shadow-lg group-hover:scale-110 transition-transform">
                 <img src="logo2.png" alt="logo">
             </div>
-            <span class="hidden sm:inline text-sm font-medium bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Rupam Ghosh</span>
+            <span class="hidden sm:inline text-sm font-medium bg-gradient-to-r mr-2 from-white to-slate-300 bg-clip-text text-transparent">Rupam Ghosh</span>
           </button>
         </div>
 
@@ -397,14 +397,20 @@
           <div class="w-20 h-1 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full mb-6"></div>
         </div>
         
-        <div class="space-y-4 text-lg leading-relaxed">
-          <p class="text-slate-300">
-            Hi, I'm Rupam. I turn coffee into code and error messages into life lessons. I specialize in building practical web systems, debugging things that should have been obvious, and occasionally shipping clean code.
-          </p>
-          <p class="text-slate-400">
-            <span class="text-amber-400 font-semibold">Superpower:</span> Reading stack traces other devs refused to touch.
-          </p>
-        </div>
+                                <div class="text-lg text-gray-300 space-y-4">
+                            <p>
+                                Hi there! I'm Rupam, a developer who somehow convinced people to pay me for turning coffee into code. 
+                                When I'm not debugging someone else's "temporary" solution from 2019, you'll find me creating new bugs... 
+                                I mean, features.
+                            </p>
+                            <p>
+                                I specialize in making things work, then making them work better, and occasionally making them work at all. 
+                                My superpower? Reading error messages that make other developers cry.
+                            </p>
+                            <p class="text-yellow-500 font-medium">
+                                Professional motto: "It works on my machine" 🤷‍♂️
+                            </p>
+                        </div>
 
         <!-- Skills indicators -->
         <div class="grid grid-cols-2 gap-4 mt-8">
@@ -631,7 +637,7 @@ const projectsData = [
     role: "Backend Developer",
     duration: "4 months",
     technologies: ["Socket.io", "Express", "Redis", "WebRTC", "JWT"],
-    icon: "message-circle",
+    icon: "../assets/controverseLogo.jpg",
     gradient: "from-indigo-600 to-purple-600",
     github: "https://github.com/",
     demo: "https://chat.example.com"
@@ -995,11 +1001,22 @@ function renderEnhancedProjects() {
     
     const iconWrapper = document.createElement('div');
     iconWrapper.className = `w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${project.gradient} shadow-lg`;
-    
+
+    if (project.icon && (project.icon.endsWith('.png') || project.icon.endsWith('.jpg') || project.icon.endsWith('.svg'))) {
+    // Local image
+    const img = document.createElement('img');
+    img.src = project.icon; // e.g. "assets/images/projects/chat.png"
+    img.alt = project.title + " icon";
+    img.className = "w-7 h-7 object-contain";
+    iconWrapper.appendChild(img);
+    } else {
+    // Lucide fallback
     const icon = document.createElement('i');
     icon.dataset.lucide = project.icon || 'folder';
     icon.className = 'w-7 h-7 text-white';
     iconWrapper.appendChild(icon);
+    }
+
     
     if (project.active) {
       const statusDot = document.createElement('div');
