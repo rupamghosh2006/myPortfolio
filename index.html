@@ -6,194 +6,94 @@
     <title>Rupam Ghosh - Developer & Debugger</title>
     <meta name="description" content="Portfolio of Rupam Ghosh - Part-time developer, full-time debugger">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
-        }
-        
-        .glow-on-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .glow-on-hover:focus,
-        .glow-on-hover:hover {
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
-            outline: none;
-        }
-        
-        .loader-overlay {
-            background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%);
-        }
-        
-        .loader-text {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-        
-        .fade-out {
-            animation: fadeOut 0.8s ease-out forwards;
-        }
-        
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-        
-        .parallax-container {
-            perspective: 1000px;
-        }
-        
-        .parallax-image {
-            transition: transform 0.1s ease-out;
-        }
-        
-        .modal-backdrop {
-            backdrop-filter: blur(8px);
-        }
-        
-        .toast {
-            animation: slideInUp 0.5s ease-out;
-        }
-        
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .hidden-accessible {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* Focus styles for better accessibility */
-        .focus-ring:focus {
-            outline: 2px solid #fbbf24;
-            outline-offset: 2px;
-        }
-        
-        /* Three.js canvas responsive */
-        #three-canvas {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        @media (max-width: 640px) {
-            .three-canvas-container {
-                height: 250px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-black text-white min-h-screen">
+<body>
     <!-- Loading Screen -->
-    <div id="loader" class="loader-overlay fixed inset-0 z-50 flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="loader-text text-2xl md:text-3xl font-light text-gray-300">
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-animation">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+            <h1 class="loader-text">
                 I'm not a professional UI/UX designer — don't expect much.
             </h1>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-percent">0%</div>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" class="opacity-0 transition-opacity duration-800">
+    <div id="main-content" class="main-content">
         <!-- Navigation -->
-        <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-40 border-b border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-16">
-                    <div class="gradient-text text-xl font-bold">RG</div>
-                    <div class="hidden md:flex space-x-8">
-                        <a href="#hero" class="hover:text-yellow-400 transition-colors focus-ring">Home</a>
-                        <a href="#projects" class="hover:text-yellow-400 transition-colors focus-ring">Projects</a>
-                        <a href="#about" class="hover:text-yellow-400 transition-colors focus-ring">About</a>
-                        <a href="#contact" class="hover:text-yellow-400 transition-colors focus-ring">Contact</a>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-content">
+                    <div class="nav-brand">RG</div>
+                    <div class="nav-links">
+                        <a href="#hero" class="nav-link">Home</a>
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#contact" class="nav-link">Contact</a>
                     </div>
-                    <button id="mobile-menu-btn" class="md:hidden focus-ring" aria-label="Toggle mobile menu">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                        <i data-lucide="menu"></i>
                     </button>
                 </div>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-800">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#hero" class="block px-3 py-2 hover:text-yellow-400 focus-ring">Home</a>
-                    <a href="#projects" class="block px-3 py-2 hover:text-yellow-400 focus-ring">Projects</a>
-                    <a href="#about" class="block px-3 py-2 hover:text-yellow-400 focus-ring">About</a>
-                    <a href="#contact" class="block px-3 py-2 hover:text-yellow-400 focus-ring">Contact</a>
+            <div id="mobile-menu" class="mobile-menu hidden">
+                <div class="mobile-menu-content">
+                    <a href="#hero" class="mobile-nav-link">Home</a>
+                    <a href="#projects" class="mobile-nav-link">Projects</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center pt-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8">
-                        <div>
-                            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-intro">
+                            <h1 class="hero-title">
                                 Hey — welcome to <span class="gradient-text">Rupam's</span> portfolio.
                             </h1>
-                            <p class="text-xl md:text-2xl text-gray-400">
+                            <p class="hero-subtitle">
                                 Part-time developer, full-time debugger.
                             </p>
                         </div>
-                        <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex">
-                            <button id="hire-me-btn" class="w-full sm:w-auto bg-yellow-500 text-black px-8 py-3 rounded-lg font-medium hover-lift glow-on-hover focus-ring">
+                        <div class="hero-actions">
+                            <button id="hire-me-btn" class="btn btn--primary btn--lg">
                                 Hire me
                             </button>
-                            <a href="#projects" class="w-full sm:w-auto inline-block text-center border border-yellow-500 text-yellow-500 px-8 py-3 rounded-lg font-medium hover-lift glow-on-hover focus-ring">
+                            <a href="#projects" class="btn btn--outline btn--lg">
                                 View projects
                             </a>
                         </div>
                     </div>
-                    <div class="three-canvas-container h-96 md:h-[500px] relative">
-                        <canvas id="three-canvas" class="w-full h-full rounded-lg"></canvas>
-                        <div id="three-fallback" class="hidden w-full h-full bg-gray-900 rounded-lg flex items-center justify-center">
-                            <div class="text-center">
-                                <i data-lucide="bug" class="w-24 h-24 mx-auto mb-4 text-yellow-500"></i>
-                                <p class="text-gray-400">Debug mode activated</p>
+                    <div class="hero-canvas">
+                        <canvas id="three-canvas"></canvas>
+                        <div id="three-fallback" class="three-fallback hidden">
+                            <div class="fallback-content">
+                                <i data-lucide="bug"></i>
+                                <p>Debug mode activated</p>
                             </div>
                         </div>
                     </div>
@@ -202,134 +102,42 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-gray-900/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                        Projects <span class="text-yellow-500">(The Good, The Bad, The Debugged)</span>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Projects <span class="accent-text">(The Good, The Bad, The Debugged)</span>
                     </h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto">
+                    <p class="section-subtitle">
                         A collection of code that somehow works. Don't ask me how.
                     </p>
                 </div>
 
                 <!-- Project Filter -->
-                <div class="flex justify-center mb-12">
-                    <div class="inline-flex rounded-lg bg-gray-800 p-1">
-                        <button class="project-filter-btn px-6 py-2 rounded-md focus-ring bg-yellow-500 text-black" data-filter="all">
-                            All
-                        </button>
-                        <button class="project-filter-btn px-6 py-2 rounded-md focus-ring text-gray-300 hover:text-white" data-filter="past">
-                            Past Projects
-                        </button>
-                        <button class="project-filter-btn px-6 py-2 rounded-md focus-ring text-gray-300 hover:text-white" data-filter="current">
-                            Current Projects
-                        </button>
+                <div class="filter-container">
+                    <div class="filter-buttons">
+                        <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="past">Past Projects</button>
+                        <button class="filter-btn" data-filter="current">Current Projects</button>
                     </div>
                 </div>
 
                 <!-- Projects Grid -->
-                <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Past Projects -->
-                    <div class="project-card hover-lift bg-gray-800 rounded-lg overflow-hidden" data-category="past">
-                        <div class="h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
-                            <i data-lucide="globe" class="w-16 h-16 text-white"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
-                            <p class="text-gray-400 mb-4">Built a shopping platform that actually processes payments (shocking, I know).</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-blue-600 text-xs rounded-full">React</span>
-                                <span class="px-3 py-1 bg-green-600 text-xs rounded-full">Node.js</span>
-                                <span class="px-3 py-1 bg-purple-600 text-xs rounded-full">MongoDB</span>
-                            </div>
-                            <div class="text-sm text-gray-500 mb-4">
-                                <span>Role: Full Stack Developer</span> • <span>6 months</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
-                                    Live Demo
-                                </a>
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="github" class="w-4 h-4 mr-1"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card hover-lift bg-gray-800 rounded-lg overflow-hidden" data-category="past">
-                        <div class="h-48 bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center">
-                            <i data-lucide="smartphone" class="w-16 h-16 text-white"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Task Management App</h3>
-                            <p class="text-gray-400 mb-4">Because the world needed another todo app (but this one has dark mode).</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-blue-600 text-xs rounded-full">React Native</span>
-                                <span class="px-3 py-1 bg-yellow-600 text-xs rounded-full">Firebase</span>
-                            </div>
-                            <div class="text-sm text-gray-500 mb-4">
-                                <span>Role: Mobile Developer</span> • <span>3 months</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
-                                    Live Demo
-                                </a>
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="github" class="w-4 h-4 mr-1"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Current Projects -->
-                    <div class="project-card hover-lift bg-gray-800 rounded-lg overflow-hidden border-2 border-yellow-500" data-category="current">
-                        <div class="h-48 bg-gradient-to-br from-yellow-600 to-orange-600 flex items-center justify-center">
-                            <i data-lucide="zap" class="w-16 h-16 text-white"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-2">
-                                <h3 class="text-xl font-bold">AI Code Reviewer</h3>
-                                <span class="ml-2 px-2 py-1 bg-green-600 text-xs rounded-full">Active</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">AI that judges my code better than my past self does.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-blue-600 text-xs rounded-full">Python</span>
-                                <span class="px-3 py-1 bg-purple-600 text-xs rounded-full">OpenAI</span>
-                                <span class="px-3 py-1 bg-gray-600 text-xs rounded-full">FastAPI</span>
-                            </div>
-                            <div class="text-sm text-gray-500 mb-4">
-                                <span>Role: Solo Developer</span> • <span>Ongoing</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
-                                    Preview
-                                </a>
-                                <a href="#" class="text-yellow-500 hover:underline focus-ring flex items-center">
-                                    <i data-lucide="github" class="w-4 h-4 mr-1"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Projects will be populated by JavaScript -->
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6">
-                        <h2 class="text-3xl md:text-4xl font-bold">
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">
                             About <span class="gradient-text">Me</span>
                         </h2>
-                        <div class="text-lg text-gray-300 space-y-4">
+                        <div class="about-description">
                             <p>
                                 Hi there! I'm Rupam, a developer who somehow convinced people to pay me for turning coffee into code. 
                                 When I'm not debugging someone else's "temporary" solution from 2019, you'll find me creating new bugs... 
@@ -339,22 +147,18 @@
                                 I specialize in making things work, then making them work better, and occasionally making them work at all. 
                                 My superpower? Reading error messages that make other developers cry.
                             </p>
-                            <p class="text-yellow-500 font-medium">
+                            <p class="motto">
                                 Professional motto: "It works on my machine" 🤷‍♂️
                             </p>
                         </div>
                     </div>
-                    <div class="parallax-container">
-                        <div class="relative">
-                            <div class="parallax-image bg-gradient-to-br from-yellow-500 to-orange-500 p-1 rounded-2xl rotate-3 hover:rotate-6 transition-transform duration-300">
-                                <div class="bg-gray-800 rounded-xl p-8 -rotate-3">
-                                    <div class="w-64 h-80 bg-gradient-to-b from-gray-700 to-gray-600 rounded-lg mx-auto flex items-center justify-center">
-                                        <div class="text-center">
-                                            <i data-lucide="user" class="w-24 h-24 mx-auto mb-4 text-yellow-500"></i>
-                                            <p class="text-gray-300">Photo placeholder</p>
-                                            <p class="text-xs text-gray-400 mt-2">744×1024 image goes here</p>
-                                        </div>
-                                    </div>
+                    <div class="about-image">
+                        <div class="image-container">
+                            <div class="image-frame">
+                                <div class="placeholder-image">
+                                    <i data-lucide="user"></i>
+                                    <p>Photo placeholder</p>
+                                    <small>744×1024 image goes here</small>
                                 </div>
                             </div>
                         </div>
@@ -364,131 +168,77 @@
         </section>
 
         <!-- Tech Stack Section -->
-        <section id="tech-stack" class="py-20 bg-gray-900/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                        Tech Stack <span class="text-yellow-500">(Tools of Mass Construction)</span>
+        <section id="tech-stack" class="tech-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Tech Stack <span class="accent-text">(Tools of Mass Construction)</span>
                     </h2>
-                    <p class="text-gray-400">My arsenal for building digital dreams and debugging nightmares</p>
+                    <p class="section-subtitle">My arsenal for building digital dreams and debugging nightmares</p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="code" class="w-8 h-8 mx-auto text-yellow-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">JavaScript</h3>
-                        <span class="px-2 py-1 bg-green-600 text-xs rounded-full">Expert</span>
-                    </div>
-
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="layout" class="w-8 h-8 mx-auto text-blue-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">React</h3>
-                        <span class="px-2 py-1 bg-green-600 text-xs rounded-full">Expert</span>
-                    </div>
-
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="server" class="w-8 h-8 mx-auto text-green-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">Node.js</h3>
-                        <span class="px-2 py-1 bg-blue-600 text-xs rounded-full">Comfortable</span>
-                    </div>
-
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="database" class="w-8 h-8 mx-auto text-purple-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">MongoDB</h3>
-                        <span class="px-2 py-1 bg-blue-600 text-xs rounded-full">Comfortable</span>
-                    </div>
-
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="git-branch" class="w-8 h-8 mx-auto text-orange-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">Git</h3>
-                        <span class="px-2 py-1 bg-green-600 text-xs rounded-full">Expert</span>
-                    </div>
-
-                    <div class="text-center hover-lift group">
-                        <div class="bg-gray-800 rounded-lg p-6 mb-3 group-hover:bg-gray-700 transition-colors">
-                            <i data-lucide="box" class="w-8 h-8 mx-auto text-yellow-500"></i>
-                        </div>
-                        <h3 class="font-medium mb-1">Three.js</h3>
-                        <span class="px-2 py-1 bg-yellow-600 text-xs rounded-full">Familiar</span>
-                    </div>
+                <div id="tech-grid" class="tech-grid">
+                    <!-- Tech items will be populated by JavaScript -->
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
                         Let's <span class="gradient-text">Connect</span>
                     </h2>
-                    <p class="text-gray-400">Got a project? Need someone to debug your life? Let's talk!</p>
+                    <p class="section-subtitle">Got a project? Need someone to debug your life? Let's talk!</p>
                 </div>
 
-                <div class="bg-gray-900 rounded-2xl p-8">
-                    <form id="contact-form" class="space-y-6">
+                <div class="contact-form-container">
+                    <form id="contact-form" name="submit-to-google-sheet" class="contact-form">
                         <!-- Honeypot field -->
-                        <input type="text" name="honey" class="hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <input type="text" name="honey" class="sr-only" tabindex="-1" aria-hidden="true">
                         
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium mb-2">Name *</label>
-                                <input type="text" id="name" name="name" required 
-                                       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus-ring focus:border-yellow-500"
-                                       placeholder="Your awesome name">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name *</label>
+                                <input type="text" id="name" name="name" required class="form-control" placeholder="Your awesome name">
                             </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium mb-2">Email *</label>
-                                <input type="email" id="email" name="email" required 
-                                       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus-ring focus:border-yellow-500"
-                                       placeholder="your.email@example.com">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" required class="form-control" placeholder="your.email@example.com">
                             </div>
                         </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium mb-2">Subject *</label>
-                            <input type="text" id="subject" name="subject" required 
-                                   class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus-ring focus:border-yellow-500"
-                                   placeholder="What's cooking in your mind?">
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <input type="text" id="subject" name="subject" required class="form-control" placeholder="What's cooking in your mind?">
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="5" required 
-                                      class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus-ring focus:border-yellow-500"
-                                      placeholder="Tell me about your project, your bugs, or your favorite debugging snacks..."></textarea>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" rows="5" required class="form-control" placeholder="Tell me about your project, your bugs, or your favorite debugging snacks..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-yellow-500 text-black py-3 px-6 rounded-lg font-medium hover-lift glow-on-hover focus-ring">
+                        <button type="submit" class="btn btn--primary btn--full-width btn--lg">
                             Send Message (I promise I'll read it)
                         </button>
                     </form>
 
                     <!-- Success Toast -->
-                    <div id="success-toast" class="hidden mt-6 p-4 bg-green-600 rounded-lg toast">
-                        <div class="flex items-center">
-                            <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    <div id="success-toast" class="toast hidden">
+                        <div class="toast-content">
+                            <i data-lucide="check-circle"></i>
                             <span>Message sent! I'll get back to you faster than you can say "undefined is not a function".</span>
                         </div>
                     </div>
 
                     <!-- Direct Contact Info -->
-                    <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                        <p class="text-gray-400 mb-4">Or reach me directly:</p>
-                        <div class="flex justify-center space-x-8">
-                            <a href="mailto:rupam@example.com" class="flex items-center text-yellow-500 hover:underline focus-ring">
-                                <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                    <div class="contact-direct">
+                        <p class="contact-direct-text">Or reach me directly:</p>
+                        <div class="contact-links">
+                            <a href="mailto:rupam@example.com" class="contact-link">
+                                <i data-lucide="mail"></i>
                                 rupam@example.com
                             </a>
-                            <a href="tel:+1234567890" class="flex items-center text-yellow-500 hover:underline focus-ring">
-                                <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                            <a href="tel:+1234567890" class="contact-link">
+                                <i data-lucide="phone"></i>
                                 +1 (234) 567-890
                             </a>
                         </div>
@@ -498,499 +248,50 @@
         </section>
 
         <!-- Social Links -->
-        <section class="py-12 bg-gray-900/50">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h3 class="text-xl font-bold mb-8">Find me elsewhere on the internet</h3>
-                    <div class="flex justify-center space-x-6">
-                        <a href="#" target="_blank" rel="noopener noreferrer" 
-                           class="bg-gray-800 p-3 rounded-lg hover-lift glow-on-hover focus-ring">
-                            <i data-lucide="github" class="w-6 h-6"></i>
+        <section class="social-section">
+            <div class="container">
+                <div class="social-content">
+                    <h3 class="social-title">Find me elsewhere on the internet</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i data-lucide="github"></i>
                             <span class="sr-only">GitHub</span>
                         </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" 
-                           class="bg-gray-800 p-3 rounded-lg hover-lift glow-on-hover focus-ring">
-                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i data-lucide="linkedin"></i>
                             <span class="sr-only">LinkedIn</span>
                         </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" 
-                           class="bg-gray-800 p-3 rounded-lg hover-lift glow-on-hover focus-ring">
-                            <i data-lucide="twitter" class="w-6 h-6"></i>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i data-lucide="twitter"></i>
                             <span class="sr-only">Twitter</span>
                         </a>
-                        <div class="relative">
-                            <button id="insta-btn" class="bg-gray-800 p-3 rounded-lg hover-lift glow-on-hover focus-ring">
-                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                        <div class="social-tooltip-container">
+                            <button id="insta-btn" class="social-link">
+                                <i data-lucide="instagram"></i>
                                 <span class="sr-only">Instagram</span>
                             </button>
-                            <div id="insta-tooltip" class="hidden absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-700 text-sm rounded-lg whitespace-nowrap">
-                                Sorry — I don't have time for Insta/FB.
+                            <div id="insta-tooltip" class="social-tooltip hidden">
+                                Sorry — I don't have time for Instagram.
                             </div>
                         </div>
-                        <div class="relative">
-                            <button id="fb-btn" class="bg-gray-800 p-3 rounded-lg hover-lift glow-on-hover focus-ring">
-                                <i data-lucide="facebook" class="w-6 h-6"></i>
+                        <div class="social-tooltip-container">
+                            <button id="fb-btn" class="social-link">
+                                <i data-lucide="facebook"></i>
                                 <span class="sr-only">Facebook</span>
                             </button>
-                            <div id="fb-tooltip" class="hidden absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-700 text-sm rounded-lg whitespace-nowrap">
-                                Sorry — I don't have time for Insta/FB.
+                            <div id="fb-tooltip" class="social-tooltip hidden">
+                                Sorry — I don't have time for Facebook.
                             </div>
                         </div>
                     </div>
+                    <br><br>
+                    <p>&copy; 2025 Rupam Ghosh. All rights reserved. No bugs were harmed in the making of this portfolio.</p>
+
                 </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="py-8 border-t border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center text-gray-400">
-                    <p>&copy; 2025 Rupam Ghosh. All rights reserved. No bugs were harmed in the making of this portfolio.</p>
-                </div>
-            </div>
-        </footer>
     </div>
 
-    <!-- Hire Me Modal -->
-    <div id="hire-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 modal-backdrop z-50 flex items-center justify-center p-4">
-        <div class="bg-gray-900 rounded-2xl p-8 max-w-md w-full transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
-            <div class="text-center">
-                <div class="mb-6">
-                    <i data-lucide="briefcase" class="w-16 h-16 mx-auto text-yellow-500 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2">Hold Up! 🚨</h3>
-                    <p class="text-gray-300">
-                        Currently I'm working as a freelancer — I may get expensive for you.
-                    </p>
-                </div>
-                <div class="space-y-3">
-                    <button id="contact-anyway-btn" class="w-full bg-yellow-500 text-black py-3 px-6 rounded-lg font-medium hover-lift focus-ring">
-                        Contact anyway (I'm worth it)
-                    </button>
-                    <button id="close-modal-btn" class="w-full border border-gray-600 text-gray-300 py-3 px-6 rounded-lg font-medium hover:bg-gray-800 focus-ring">
-                        Close (Probably wise)
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Global variables
-        let threeScene, threeRenderer, threeCamera, debugObject;
-        let isThreeInitialized = false;
-        let animationId;
-        let lastSubmissionTime = 0;
-
-        // Loader functionality
-        function initializeLoader() {
-            const loader = document.getElementById('loader');
-            const mainContent = document.getElementById('main-content');
-            
-            setTimeout(() => {
-                loader.classList.add('fade-out');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    mainContent.classList.remove('opacity-0');
-                    mainContent.classList.add('opacity-100');
-                    initializeThreeJS();
-                }, 800);
-            }, 3000);
-        }
-
-        // Three.js initialization
-        function initializeThreeJS() {
-            const canvas = document.getElementById('three-canvas');
-            const fallback = document.getElementById('three-fallback');
-            
-            // Check for WebGL support and device capabilities
-            if (!isWebGLSupported() || isMobileDevice()) {
-                showThreeFallback();
-                return;
-            }
-
-            try {
-                // Scene setup
-                threeScene = new THREE.Scene();
-                threeCamera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-                threeRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true });
-                
-                threeRenderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-                threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                threeRenderer.setClearColor(0x000000, 0);
-
-                // Create debug object (simple rotating bug)
-                const geometry = new THREE.SphereGeometry(1, 8, 6);
-                const material = new THREE.MeshPhongMaterial({ 
-                    color: 0xfbbf24,
-                    shininess: 100
-                });
-                
-                debugObject = new THREE.Mesh(geometry, material);
-                threeScene.add(debugObject);
-
-                // Add simple lighting
-                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-                threeScene.add(ambientLight);
-                
-                const directionalLight = new THREE.DirectionalLight(0xfbbf24, 0.8);
-                directionalLight.position.set(5, 5, 5);
-                threeScene.add(directionalLight);
-
-                // Position camera
-                threeCamera.position.z = 5;
-
-                // Add mouse interaction
-                canvas.addEventListener('mousemove', onThreeMouseMove);
-                canvas.addEventListener('click', onThreeClick);
-
-                // Start animation
-                isThreeInitialized = true;
-                animate();
-
-                // Intersection Observer for performance
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (!animationId && isThreeInitialized) animate();
-                        } else {
-                            if (animationId) {
-                                cancelAnimationFrame(animationId);
-                                animationId = null;
-                            }
-                        }
-                    });
-                });
-                observer.observe(canvas);
-
-            } catch (error) {
-                console.warn('Three.js initialization failed:', error);
-                showThreeFallback();
-            }
-        }
-
-        function isWebGLSupported() {
-            try {
-                const canvas = document.createElement('canvas');
-                return !!(window.WebGLRenderingContext && canvas.getContext('webgl'));
-            } catch (e) {
-                return false;
-            }
-        }
-
-        function isMobileDevice() {
-            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        function showThreeFallback() {
-            document.getElementById('three-canvas').style.display = 'none';
-            document.getElementById('three-fallback').classList.remove('hidden');
-        }
-
-        function animate() {
-            if (!isThreeInitialized) return;
-            
-            animationId = requestAnimationFrame(animate);
-            
-            // Rotate the debug object
-            if (debugObject) {
-                debugObject.rotation.x += 0.01;
-                debugObject.rotation.y += 0.02;
-            }
-            
-            if (threeRenderer && threeScene && threeCamera) {
-                threeRenderer.render(threeScene, threeCamera);
-            }
-        }
-
-        function onThreeMouseMove(event) {
-            if (!debugObject) return;
-            
-            const rect = event.currentTarget.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-            
-            debugObject.rotation.x = y * 0.5;
-            debugObject.rotation.z = x * 0.5;
-        }
-
-        function onThreeClick() {
-            if (!debugObject) return;
-            
-            // Simple bounce animation
-            const originalScale = debugObject.scale.clone();
-            debugObject.scale.multiplyScalar(1.2);
-            
-            setTimeout(() => {
-                debugObject.scale.copy(originalScale);
-            }, 150);
-        }
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (isThreeInitialized && threeRenderer && threeCamera) {
-                const canvas = document.getElementById('three-canvas');
-                threeCamera.aspect = canvas.offsetWidth / canvas.offsetHeight;
-                threeCamera.updateProjectionMatrix();
-                threeRenderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-            }
-        });
-
-        // Mobile menu functionality
-        function initializeMobileMenu() {
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when clicking on links
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        }
-
-        // Project filter functionality
-        function initializeProjectFilter() {
-            const filterButtons = document.querySelectorAll('.project-filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filter = btn.dataset.filter;
-                    
-                    // Update active button
-                    filterButtons.forEach(b => {
-                        b.classList.remove('bg-yellow-500', 'text-black');
-                        b.classList.add('text-gray-300');
-                    });
-                    btn.classList.add('bg-yellow-500', 'text-black');
-                    btn.classList.remove('text-gray-300');
-
-                    // Filter projects
-                    projectCards.forEach(card => {
-                        if (filter === 'all' || card.dataset.category === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        }
-
-        // Parallax effect for about image
-        function initializeParallax() {
-            const parallaxImage = document.querySelector('.parallax-image');
-            if (!parallaxImage) return;
-
-            document.addEventListener('mousemove', (e) => {
-                if (window.innerWidth < 768) return; // Disable on mobile
-
-                const rect = parallaxImage.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                const deltaX = (e.clientX - centerX) / rect.width;
-                const deltaY = (e.clientY - centerY) / rect.height;
-                
-                const rotateX = deltaY * -10;
-                const rotateY = deltaX * 10;
-                
-                parallaxImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotate(3deg)`;
-            });
-
-            parallaxImage.addEventListener('mouseleave', () => {
-                parallaxImage.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) rotate(3deg)';
-            });
-        }
-
-        // Modal functionality
-        function initializeModal() {
-            const hireBtn = document.getElementById('hire-me-btn');
-            const modal = document.getElementById('hire-modal');
-            const modalContent = document.getElementById('modal-content');
-            const contactAnywayBtn = document.getElementById('contact-anyway-btn');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-
-            function openModal() {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modalContent.classList.remove('scale-95', 'opacity-0');
-                    modalContent.classList.add('scale-100', 'opacity-100');
-                }, 10);
-                
-                // Focus trap
-                closeModalBtn.focus();
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                modalContent.classList.remove('scale-100', 'opacity-100');
-                modalContent.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                    hireBtn.focus();
-                }, 300);
-            }
-
-            hireBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
-            
-            contactAnywayBtn.addEventListener('click', () => {
-                closeModal();
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // Close on backdrop click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
-            });
-
-            // Close on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                    closeModal();
-                }
-            });
-        }
-
-        // Social tooltips
-        function initializeSocialTooltips() {
-            const instaBtn = document.getElementById('insta-btn');
-            const instaTooltip = document.getElementById('insta-tooltip');
-            const fbBtn = document.getElementById('fb-btn');
-            const fbTooltip = document.getElementById('fb-tooltip');
-
-            function showTooltip(btn, tooltip) {
-                tooltip.classList.remove('hidden');
-            }
-
-            function hideTooltip(tooltip) {
-                tooltip.classList.add('hidden');
-            }
-
-            [
-                { btn: instaBtn, tooltip: instaTooltip },
-                { btn: fbBtn, tooltip: fbTooltip }
-            ].forEach(({ btn, tooltip }) => {
-                btn.addEventListener('mouseenter', () => showTooltip(btn, tooltip));
-                btn.addEventListener('mouseleave', () => hideTooltip(tooltip));
-                btn.addEventListener('focus', () => showTooltip(btn, tooltip));
-                btn.addEventListener('blur', () => hideTooltip(tooltip));
-            });
-        }
-
-        // Contact form functionality
-        function initializeContactForm() {
-            const form = document.getElementById('contact-form');
-            const successToast = document.getElementById('success-toast');
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                // Simple rate limiting
-                const now = Date.now();
-                if (now - lastSubmissionTime < 5000) {
-                    alert('Please wait a moment before sending another message.');
-                    return;
-                }
-
-                // Check honeypot
-                const honeypot = form.elements['honey'];
-                if (honeypot.value) {
-                    console.log('Spam detected');
-                    return;
-                }
-
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                delete data.honey; // Remove honeypot field
-
-                try {
-                    // This is where you'd send to your Google Sheets endpoint
-                    // For demo purposes, we'll simulate success
-                    await simulateFormSubmission(data);
-                    
-                    // Show success message
-                    successToast.classList.remove('hidden');
-                    form.reset();
-                    lastSubmissionTime = now;
-
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        successToast.classList.add('hidden');
-                    }, 5000);
-
-                } catch (error) {
-                    alert('Something went wrong. Please try again or contact me directly.');
-                }
-            });
-        }
-
-        async function simulateFormSubmission(data) {
-            // Simulate API call delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // Here you would actually send to your Google Sheets endpoint:
-            /*
-            const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-            
-            if (!response.ok) {
-                throw new Error('Form submission failed');
-            }
-            */
-        }
-
-        // Smooth scrolling for navigation links
-        function initializeSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Initialize all functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeLoader();
-            initializeMobileMenu();
-            initializeProjectFilter();
-            initializeParallax();
-            initializeModal();
-            initializeSocialTooltips();
-            initializeContactForm();
-            initializeSmoothScrolling();
-        });
-
-        // Handle page visibility changes for performance
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            } else if (!document.hidden && isThreeInitialized && !animationId) {
-                animate();
-            }
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
