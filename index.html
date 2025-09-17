@@ -415,11 +415,11 @@
         <!-- Skills indicators -->
         <div class="grid grid-cols-2 gap-4 mt-8">
           <div class="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-            <div class="text-2xl font-bold text-amber-400">3+</div>
+            <div class="text-2xl font-bold text-amber-400">2+</div>
             <div class="text-sm text-slate-400">Years Experience</div>
           </div>
           <div class="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-            <div class="text-2xl font-bold text-amber-400">10+</div>
+            <div class="text-2xl font-bold text-amber-400">4+</div>
             <div class="text-sm text-slate-400">Projects Shipped</div>
           </div>
         </div>
@@ -592,54 +592,54 @@ const projectsData = [
   { 
     id: 1, 
     title: "Maths with SD", 
-    description: "Full-featured shopping platform with real payment processing, inventory management, and admin dashboard. Built for scalability with modern architecture patterns.", 
+    description: "Secure, scalable assessment platform built for mathematics teachers: full question‐bank with OCR upload (images/PDF), randomized & scheduled tests, anti-cheating measures, automatic grading & analytics, multilingual support (English / Bengali), with student & teacher dashboards — designed for robust, fair, and efficient evaluation.", 
     category: "past", 
-    role: "Full Stack Developer", 
+    role: "Backend Developer", 
     duration: "6 months", 
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS"], 
+    technologies: ["Click the explore more button to see the full list..."], 
     icon: "../assets/msd.jpg", 
     gradient: "from-blue-600 to-purple-600",
-    github: "https://github.com/",
+    github: "#",
     demo: "https://docs.mathswithsd.in"
   },
   { 
     id: 2, 
     title: "Friends Consulting", 
-    description: "Mobile-first task management solution with team collaboration, real-time updates, and dark mode. Because the world needed another todo app (but this one actually works).", 
+    description: "A modern agency offering a complete suite: event planning, photography & videography, graphics & branding, digital marketing, web development and AI consulting. Designed with innovation, client-growth, and creative excellence at its core.", 
     category: "past", 
-    role: "Mobile Developer", 
+    role: "Frontend Developer", 
     duration: "3 months", 
-    technologies: ["React Native", "Firebase", "Redux", "Push Notifications"], 
+    technologies: ["HTML", "Tailwind CSS", "JavaScript"], 
     icon: "assets/fcLogo.jpg", 
     gradient: "from-green-600 to-teal-600",
-    github: "https://github.com/",
+    github: "https://github.com/rupamghosh2006/friendsconsulting-website",
     demo: "https://friendsconsulting.in"
   },
   { 
     id: 3, 
-    title: "AI Code Reviewer", 
-    description: "Intelligent code review system that analyzes code quality, suggests improvements, and catches bugs before they reach production. AI that judges my code better than my past self does.", 
+    title: "Physics Simulation Engine", 
+    description: "High-performance physics simulation engine featuring real-time rendering, accurate mechanics, collision detection, and extensible APIs. Built for scalability, modularity, and seamless integration into games, research, and educational platforms.", 
     category: "current", 
-    role: "Solo Developer", 
+    role: "Fullstack mobile Developer", 
     duration: "Ongoing", 
-    technologies: ["Python", "OpenAI", "FastAPI", "Docker", "PostgreSQL"], 
+    technologies: ["coming soon..."], 
     icon: "zap", 
     gradient: "from-yellow-600 to-orange-600", 
     active: true,
-    github: "https://github.com/",
-    demo: "https://preview.example.com"
+    github: "/",
+    demo: "/"
   },
   {
     id: 4,
     title: "Real-time Chat Platform",
-    description: "Secure messaging platform with end-to-end encryption, file sharing, and video calling. Built for privacy-conscious users who value security.",
+    description: "Real-time anonymous chat service with secure messaging, instant matching, moderation tools, user & admin dashboards, and privacy-first infrastructure — built for safe, expressive, and ever-active community engagement.",
     category: "past",
     role: "Backend Developer",
     duration: "4 months",
-    technologies: ["Socket.io", "Express", "Redis", "WebRTC", "JWT"],
+    technologies: ["Socket.io", "Express", "HTML", "Tailwind CSS", "JavaScript"],
     icon: "../assets/controverseLogo.jpg",
     gradient: "from-indigo-600 to-purple-600",
-    github: "https://github.com/",
+    github: "https://github.com/rupamghosh2006/ChatApp",
     demo: "https://chat.friendsconsulting.in"
   }
 ];
@@ -1082,18 +1082,44 @@ function renderEnhancedProjects() {
     const demoLink = document.createElement('a');
     demoLink.href = project.demo || '#';
     demoLink.className = 'inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium transition-colors';
-    demoLink.innerHTML = `
-      <i data-lucide="external-link" class="w-4 h-4"></i>
-      <span>${project.category === 'current' ? 'Preview' : 'Live Demo'}</span>
-    `;
+    if (project.title === "Maths with SD") {
+      demoLink.innerHTML = `
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+        <span>Explore More</span>
+      `;
+    } else {
+      demoLink.innerHTML = `
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+        <span>${project.category === 'current' ? 'Preview' : 'Live Demo'}</span>
+      `;
+    }
+
     
     const codeLink = document.createElement('a');
     codeLink.href = project.github || '#';
     codeLink.className = 'inline-flex items-center gap-2 text-slate-300 hover:text-white font-medium transition-colors';
+    if (project.title === "Maths with SD") {
+    codeLink.classList.add("relative", "group"); // enable tooltip styling
+    codeLink.innerHTML = `
+      <i data-lucide="github" class="w-4 h-4"></i>
+      <span>Source</span>
+      <div id="insta-tip" role="tooltip" 
+        class="invisible opacity-0 group-hover:visible group-hover:opacity-100 
+        transition-all duration-200 absolute -top-12 left-1/2 -translate-x-1/2 
+        bg-slate-700 backdrop-blur-sm px-3 py-2 rounded-lg text-xs text-slate-200 
+        shadow-lg whitespace-nowrap border border-slate-600">
+          Sorry, it is a proprietary product, and the owner doesn’t allow us to share the code publicly.
+          <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 
+          border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-700"></div>
+      </div>
+    `;
+  } else {
     codeLink.innerHTML = `
       <i data-lucide="github" class="w-4 h-4"></i>
       <span>Source</span>
     `;
+  }
+
     
     links.appendChild(demoLink);
     links.appendChild(codeLink);
